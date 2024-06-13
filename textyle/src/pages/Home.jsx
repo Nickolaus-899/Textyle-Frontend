@@ -1,34 +1,45 @@
-import InputField from "../components/InputField";
-import {useState} from "react";
-import OutputField from "../components/OutputField";
-import TranslateButton from "../components/TranslateButton";
-import "./../components/css/index.css"
-import "./../index.css"
-import Options from "../components/Options";
+import styled from "styled-components";
+import {Link} from "react-router-dom";
+import "./../images/book.jpg";
+import book from "./../images/book.jpg";
 
-function Home() {
-    const [input, setInput] = useState("");
-    const [output, setOutput] = useState("");
+const Home = (props) => {
 
-    return (
-        <div>
-            <div className="TranslateWrapper">
-                <div className="TranslateItem">
-                    <InputField setInput={setInput} input={input}/>
-                </div>
+  return (
+      <div className="HomeItemsWrapper">
+          <div className="HomeItem">
+              <h1>Style Your Text with Ease</h1>
+              <p>
+                  Transform your text with just one click. Simply enter your text,
+                  choose a style, and see the magic happen!
+              </p>
+              <LinkToTextyle to={'/textyle'}>
+                  Let's try it!
+              </LinkToTextyle>
+          </div>
+          <div className="HomeImage">
+              <img src={book} alt="Book"/>
+          </div>
 
-                <div className="TranslateItem">
-                    <OutputField output={output}/>
-                </div>
-
-                <div className="TranslateItem">
-                    <Options input={input} setOutput={setOutput}/>
-                </div>
-            </div>
-
-            <TranslateButton input={input} setOutput={setOutput}/>
-        </div>
-    )
+      </div>
+  )
 }
 
-export default Home
+
+const LinkToTextyle = styled(Link)`
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 10px;
+  
+  background-color: black;
+  color: white;
+  
+  padding: 15px;
+  
+  justify-content: center;
+  
+  width: 9rem;
+`
+
+
+export default Home;
