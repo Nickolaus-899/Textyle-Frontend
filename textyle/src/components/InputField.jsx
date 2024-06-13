@@ -18,26 +18,35 @@ const InputField = (props) => {
     );
 }
 
-export default InputField
+export default InputField;
 
-const IForm = styled.form`
-  input {
-    //width: 30rem;
-    //height: 500px;
-  }
-`
-
-const StyledTextArea = styled.textarea`
-  width: 30rem;
-  height: 60rex;
+export const IForm = styled.div`
+  width: 25rem;
+  height: 50rex;
   padding: 2rem;
-  
+
   text-align: left;
   vertical-align: top;
+
+  resize: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 2rem;
+
+  background-color: #e0e0e0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const StyledTextArea = styled.textarea`
+  width: 90%;
+  height: 90%;
+  padding-right: 2rem;
+
+  background-color: #e0e0e0;
+  border: 1px solid #e0e0e0;
   
   resize: none;
-  border: 1px solid red;
-  border-radius: 2rem;
-  
-  
+  outline: none;
 `;

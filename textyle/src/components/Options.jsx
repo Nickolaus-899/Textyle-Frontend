@@ -2,7 +2,13 @@ import TranslateButton from "./TranslateButton";
 
 const Options = (props) => {
     return (
-        <div>Some options: <TranslateButton input={props.input} setOutput={props.setOutput}/></div>
+        <div className="OptionsStyle">
+            <TranslateButton name="Деловой" input={props.input} setOutput={props.setOutput}/>
+            <TranslateButton name="Публицистический" input={props.input} setOutput={props.setOutput}/>
+            <TranslateButton name="Научный" input={props.input} setOutput={props.setOutput}/>
+            <TranslateButton name="Художественный" input={props.input} setOutput={props.setOutput}/>
+            <TranslateButton name="Разговорный" input={props.input} setOutput={props.setOutput}/>
+        </div>
     )
 }
 

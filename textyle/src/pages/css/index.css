@@ -129,4 +129,10 @@
 .MyButton:hover {
     background-color: blueviolet;
     border: 2px solid blueviolet;
+
+    cursor: pointer;
+}
+
+.OptionButton {
+    width: 15rem;
 }

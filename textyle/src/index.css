@@ -19,3 +19,22 @@ code {
   font-family: "Montserrat", 'sans-serif';
   color: black;
 }
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

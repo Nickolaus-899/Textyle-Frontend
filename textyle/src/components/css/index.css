@@ -1,6 +1,4 @@
 .TranslateWrapper {
-    border: 5px solid green;
-
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -9,4 +7,8 @@
 
 .TranslateItem {
     margin-left: 3rem;
+}
+
+.OptionsStyle > * {
+    margin-top: 15px;
 }
