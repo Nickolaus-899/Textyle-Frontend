@@ -14,7 +14,14 @@ const OutputField = (props) => {
 export default OutputField
 
 const OutForm = styled.div`
-  padding: 10px;
-  border: red solid 1px;
-  width: 50%;
+  padding: 2rem;
+  width: 30rem;
+  height: 60rex;
+
+  border: 1px solid blue;
+  border-radius: 2rem;
+
+  text-align: left;
+  vertical-align: top;
+  resize: none;
 `

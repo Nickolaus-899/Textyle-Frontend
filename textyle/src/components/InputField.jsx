@@ -9,8 +9,9 @@ const InputField = (props) => {
     return (
         <div>
             <IForm onSubmit={submitHandler}>
-                <input onChange={(e) => props.setInput(e.target.value)}
-                       type="text" value={props.input}
+                <StyledTextArea
+                    onChange={(e) => props.setInput(e.target.value)}
+                    value={props.input}
                 />
             </IForm>
         </div>
@@ -19,8 +20,24 @@ const InputField = (props) => {
 
 export default InputField
 
-const IForm = styled.div`
+const IForm = styled.form`
   input {
-    width: 50%;
+    //width: 30rem;
+    //height: 500px;
   }
 `
+
+const StyledTextArea = styled.textarea`
+  width: 30rem;
+  height: 60rex;
+  padding: 2rem;
+  
+  text-align: left;
+  vertical-align: top;
+  
+  resize: none;
+  border: 1px solid red;
+  border-radius: 2rem;
+  
+  
+`;

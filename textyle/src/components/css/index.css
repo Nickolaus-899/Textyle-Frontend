@@ -1,0 +1,12 @@
+.TranslateWrapper {
+    border: 5px solid green;
+
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.TranslateItem {
+    margin-left: 3rem;
+}
