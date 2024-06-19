@@ -136,3 +136,14 @@
 .OptionButton {
     width: 15rem;
 }
+
+
+/*-----------------------------------*/
+
+.TeammatesList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin: 3rem;
+}

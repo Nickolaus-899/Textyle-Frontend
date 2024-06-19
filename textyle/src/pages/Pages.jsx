@@ -4,8 +4,10 @@ import {Route, Routes, useLocation} from "react-router-dom";
 
 import { AnimatePresence } from "framer-motion";
 import Home from "./Home";
-import Contact from "./Contact";
+import About from "./About";
 import Account from "./Account";
+import Reg from "./Reg";
+import Auth from "./Auth";
 
 function Pages() {
     const location = useLocation();
@@ -14,8 +16,10 @@ function Pages() {
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/textyle" element={<Textyle/>}/>
-                <Route path="/contact" element={<Contact/>}/>
+                <Route path="/about" element={<About/>}/>
                 <Route path="/account" element={<Account/>}/>
+                <Route path="/reg" element={<Reg/>}/>
+                <Route path="/auth" element={<Auth/>}/>
             </Routes>
         </AnimatePresence>
     )

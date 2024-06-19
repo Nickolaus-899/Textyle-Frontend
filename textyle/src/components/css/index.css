@@ -12,3 +12,53 @@
 .OptionsStyle > * {
     margin-top: 15px;
 }
+
+/*-------------------------------*/
+
+.TeammateLink img {
+    width: 15rem;
+    /*height: 100%;*/
+
+    border-radius: 10px;
+}
+
+.TeammateCard {
+    margin-bottom: 30px;
+    max-width: 440px;
+    background-color: white;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    box-shadow: 0 10px 40px rgba(176, 175, 189, 0.85);
+
+    transition: transform 0.2s ease-in;
+}
+
+.TeammateCard:hover {
+    transform: translate(2px, -15px);
+}
+
+.TeammateLink {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*flex-direction: column;*/
+
+    text-decoration: none;
+    display: block;
+    color: black;
+    padding: 20px;
+}
+
+.TeammateLink h2 {
+    transition: color 0.3s ease-in;
+}
+
+.TeammateLink:hover h2 {
+    color: blueviolet;
+}
+
+
+.TeammateCard h2 {
+    margin-bottom: 5px;
+}
