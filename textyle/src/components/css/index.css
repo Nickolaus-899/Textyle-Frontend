@@ -62,3 +62,16 @@
 .TeammateCard h2 {
     margin-bottom: 5px;
 }
+
+/*-------------------------------*/
+
+
+.EnterFieldClass {
+    border: 0;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+
+    padding: 10px;
+
+    width: 18rem;
+}
