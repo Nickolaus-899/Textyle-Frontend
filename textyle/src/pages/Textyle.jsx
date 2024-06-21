@@ -13,10 +13,12 @@ function Textyle() {
         <div>
             <div className="TranslateWrapper">
                 <div className="TranslateItem">
+                    <p>Input</p>
                     <InputField setInput={setInput} input={input}/>
                 </div>
 
                 <div className="TranslateItem">
+                    <p>Output</p>
                     <OutputField output={output}/>
                 </div>
 

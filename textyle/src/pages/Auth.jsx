@@ -11,8 +11,8 @@ const Auth = (props) => {
 
     return (
       <div className="LoginList">
-          <EnterField title="Имя" setValue={setName}/>
-          <EnterField title="Пароль" setValue={setPassword}/>
+          <EnterField title="Name" setValue={setName}/>
+          <EnterField title="Password" setValue={setPassword}/>
 
           <div className="LoginButton">
               <button className="MyButton" onClick={() => (

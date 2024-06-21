@@ -12,9 +12,9 @@ const Reg = (props) => {
 
   return (
       <div className="LoginList">
-        <EnterField title="Имя" setValue={setName}/>
-        <EnterField title="Пароль" setValue={setPassword}/>
-        <EnterField title="Повторите пароль" setValue={setCheckPassword}/>
+        <EnterField title="Name" setValue={setName}/>
+        <EnterField title="Password" setValue={setPassword}/>
+        <EnterField title="Repeat password" setValue={setCheckPassword}/>
 
         <div className="LoginButton">
           <button className="MyButton" onClick={() => (
