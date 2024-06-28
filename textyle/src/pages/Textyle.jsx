@@ -4,10 +4,31 @@ import OutputField from "../components/OutputField";
 import "./../components/css/index.css"
 import "./../index.css"
 import Options from "../components/Options";
+import ProxyUser from "../proxy/ProxyUser";
+import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
 
 function Textyle() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
+    const [proxy] = useState(new ProxyUser(() => {}, () => {}));
+
+    const sendRequest = () => {
+        const body = {
+            text: input,
+            prompt: '',
+        };
+        console.log(body)
+        const apiParameters = ProxyAPIParameters.getBuilder()
+          .setDataReceivingFunction(setOutputField)
+          .setBody(body)
+          .build();
+    
+        proxy.api.feed.post(apiParameters);
+    }
+
+    const setOutputField = (data) => {
+        setOutput(data)
+    }
 
     return (
         <div>
@@ -23,7 +44,7 @@ function Textyle() {
                 </div>
 
                 <div className="TranslateItem">
-                    <Options input={input} setOutput={setOutput}/>
+                    <Options changeStyle={sendRequest}/>
                 </div>
             </div>
         </div>

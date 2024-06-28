@@ -4,15 +4,15 @@ const Options = (props) => {
     return (
         <div className="OptionsStyle">
             <TranslateButton name="Business"
-                             color="darkslateblue" input={props.input} setOutput={props.setOutput}/>
+                             color="darkslateblue" onClick={props.changeStyle}/>
             <TranslateButton name="Journalistic"
-                             color="blue" input={props.input} setOutput={props.setOutput}/>
+                             color="blue" onClick={props.changeStyle}/>
             <TranslateButton name="Scientific"
-                             color="green" input={props.input} setOutput={props.setOutput}/>
+                             color="green" onClick={props.changeStyle}/>
             <TranslateButton name="Poetry"
-                             color="#d95700" input={props.input} setOutput={props.setOutput}/>
+                             color="#d95700" onClick={props.changeStyle}/>
             <TranslateButton name="Conversational"
-                             color="#b21d00" input={props.input} setOutput={props.setOutput}/>
+                             color="#b21d00" onClick={props.changeStyle}/>
         </div>
     )
 }

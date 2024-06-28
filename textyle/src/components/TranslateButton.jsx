@@ -14,7 +14,7 @@ const TranslateButton = (props) => {
             <CustomButton
                 className="MyButton"
                 color={props.color}
-                onClick={() => (props.setOutput(props.input))}
+                onClick={props.onClick}
             >
                 {props.name}
             </CustomButton>

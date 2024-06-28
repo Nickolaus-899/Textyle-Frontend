@@ -8,7 +8,7 @@ export default class GetRequestEvent{
 
         this.api = api
         this.basic_parameters = basic_parameters;
-        this. additional_parameters = ""
+        this.additional_parameters = ""
 
         //this.isLoadingProcess
     }

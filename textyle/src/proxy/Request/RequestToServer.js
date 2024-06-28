@@ -8,20 +8,20 @@
 //     error: {setResetError}
 // }
 import ReactDOM from "react-dom";
-import Login from "../../Login";
 import React from "react";
-const onUnauthorized = () => {
-    localStorage.setItem("token", null);
-    localStorage.setItem("user_id", null);
-    localStorage.setItem("status_user", "false");
-    ReactDOM.render(
-        <Login status={"Unauthorized"}/>,
-        document.getElementById("root")
-    );
-}
+// const onUnauthorized = () => {
+//     localStorage.setItem("token", null);
+//     localStorage.setItem("user_id", null);
+//     localStorage.setItem("status_user", "false");
+//     ReactDOM.render(
+//         <Login status={"Unauthorized"}/>,
+//         document.getElementById("root")
+//     );
+// }
 const requestToServer = (parameters) => {
   const requestWithBody = (request) => {
     console.log(request);
+    console.log(1)
     fetch(`${request.url}?${request.parameters}`, {
       method: request.method.toString(),
       headers: {
@@ -32,7 +32,7 @@ const requestToServer = (parameters) => {
     })
       .then(async (response) => {
           if (response.status === 401 || response.status === 403) {
-              onUnauthorized()
+              //onUnauthorized()
               return;
           }
         if (!response.ok) {
@@ -51,8 +51,9 @@ const requestToServer = (parameters) => {
         request.messageReceivingFunction(jsonData.message);
       })
       .catch((error) => {
-        request.error.setResetError(new Date().getTime());
-        request.error.setError(error.message);
+        console.log(error)
+        //request.error.setResetError(new Date().getTime());
+        //request.error.setError(error.message);
       });
   };
   const requestWithoutBody = (request) => {
@@ -62,7 +63,7 @@ const requestToServer = (parameters) => {
     })
       .then(async (response) => {
           if (response.status === 401 || response.status === 403) {
-              onUnauthorized()
+              //onUnauthorized()
               return
           }
         if (!response.ok) {

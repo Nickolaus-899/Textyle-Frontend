@@ -3,8 +3,8 @@ import RequestParameters from "../Request/RequestParameters";
 import {RequestType} from "../Request/RequestType.tsx";
 import requestToServer from "../Request/RequestToServer";
 
-const URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000/';
-const API = 'api/'
+const URL = 'http://127.0.0.1:8000/';
+const API = ''
 
 export default class ProxyAPI{
     constructor(error, message, directory) {
