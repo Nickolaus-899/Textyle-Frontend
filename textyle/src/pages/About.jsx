@@ -1,4 +1,4 @@
-import TeammateInfo from "../components/TeammateInfo";
+import TeammateInfo from "../components/about/TeammateInfo";
 
 import mikhail from "./../images/mikhail.jpg"
 import nikolai from "./../images/nikolai.jpg"

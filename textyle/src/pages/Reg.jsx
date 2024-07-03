@@ -1,4 +1,4 @@
-import EnterField from "../components/EnterField";
+import EnterField from "../components/account/EnterField";
 import {useState} from "react";
 
 const Reg = (props) => {

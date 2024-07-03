@@ -1,4 +1,4 @@
-import EnterField from "../components/EnterField";
+import EnterField from "../components/account/EnterField";
 import {useState} from "react";
 import ProxyUser from "../proxy/ProxyUser";
 import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";

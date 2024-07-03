@@ -1,9 +1,9 @@
-import InputField from "../components/InputField";
+import InputField from "../components/textyle/InputField";
 import {useState} from "react";
-import OutputField from "../components/OutputField";
+import OutputField from "../components/textyle/OutputField";
 import "./../components/css/index.css"
 import "./../index.css"
-import Options from "../components/Options";
+import Options from "../components/textyle/Options";
 import ProxyUser from "../proxy/ProxyUser";
 import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
 

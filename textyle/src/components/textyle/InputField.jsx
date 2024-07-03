@@ -21,8 +21,9 @@ const InputField = (props) => {
 export default InputField;
 
 export const IForm = styled.div`
-  width: 25rem;
-  height: 50rex;
+  width: 30vw;
+  height: 60vh;
+  
   padding: 2rem;
 
   text-align: left;

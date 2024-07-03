@@ -8,6 +8,7 @@ import About from "./About";
 import Account from "./Account";
 import Reg from "./Reg";
 import Auth from "./Auth";
+import ChangePassword from "./ChangePassword";
 
 function Pages() {
     const location = useLocation();
@@ -20,6 +21,7 @@ function Pages() {
                 <Route path="/account" element={<Account/>}/>
                 <Route path="/reg" element={<Reg/>}/>
                 <Route path="/auth" element={<Auth/>}/>
+                <Route path="/change" element={<ChangePassword/>}/>
             </Routes>
         </AnimatePresence>
     )

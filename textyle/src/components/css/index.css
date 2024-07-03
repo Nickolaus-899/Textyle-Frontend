@@ -1,12 +1,12 @@
 .TranslateWrapper {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 1vw;
     justify-content: center;
 }
 
 .TranslateItem {
-    margin-left: 3rem;
+    margin-left: 3vw;
 }
 
 .OptionsStyle > * {

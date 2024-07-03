@@ -9,6 +9,7 @@ const Header = (props) => {
         <div className="HeaderItemInfo">
           <a href="/about" className="HeaderLink">About us</a>
           <a href="/auth" className="HeaderLink">Account</a>
+            <a href="/account" className="HeaderLink">Account(test)</a>
         </div>
       </div>
   )

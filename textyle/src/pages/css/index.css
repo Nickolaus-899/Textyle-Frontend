@@ -22,7 +22,7 @@
 }
 
 .HomeItem h1 {
-    font-size: 30px;
+    font-size: 3vw;
 }
 
 .HomeItem p {
@@ -90,7 +90,7 @@
     /*padding: 8px;*/
 
     font-family: "MonteCarlo", 'sans-serif';
-    font-size: 40px;
+    font-size: 2.8vw;
     text-decoration: none;
 
     transition: color 0.3s ease-in;

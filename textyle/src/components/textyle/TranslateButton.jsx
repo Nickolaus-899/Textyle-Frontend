@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const TranslateButton = (props) => {
     const CustomButton = styled.button`
-      width: 15rem;
+      width: 15vw;
       
       &:hover {
         background-color: ${(props) => props.color};
