@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Textyle-Frontend.iml" filepath="$PROJECT_DIR$/.idea/Textyle-Frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/textyle.iml" filepath="$PROJECT_DIR$/.idea/textyle.iml" />
     </modules>
   </component>
 </project>
