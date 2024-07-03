@@ -6,7 +6,6 @@ import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
 const Auth = (props) => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [proxy] = useState(new ProxyUser(() => {}, () => {}));
 
 
     const submitHandler = (e) => {
@@ -20,7 +19,7 @@ const Auth = (props) => {
           .setBody(body)
           .build();
     
-        proxy.api.login.post(apiParameters);
+        ProxyUser.proxy().api.login.post(apiParameters);
     };
     const login = (data) => {
         console.log(data)

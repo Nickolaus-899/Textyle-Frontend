@@ -8,7 +8,14 @@ const Header = (props) => {
         </div>
         <div className="HeaderItemInfo">
           <a href="/about" className="HeaderLink">About us</a>
-          <a href="/auth" className="HeaderLink">Account</a>
+            {
+                localStorage.getItem('username') === null ? (
+            <a href="/auth" className="HeaderLink">Register</a>
+                ) : (
+                <a href="/account" className="HeaderLink">Account</a>
+            )
+            }
+
             <a href="/account" className="HeaderLink">Account(test)</a>
         </div>
       </div>

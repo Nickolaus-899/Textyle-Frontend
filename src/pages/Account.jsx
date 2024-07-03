@@ -1,6 +1,8 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import History from "../components/account/History";
 import AccountInfo from "../components/account/AccountInfo";
+import ProxyUser from "../proxy/ProxyUser";
+import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
 
 const Account = (props) => {
     const [history, setHistory] = useState([
@@ -17,9 +19,21 @@ const Account = (props) => {
         { input: "Upload file", output: "File uploaded", style: "business" },
     ]);
 
+    const setHistoryHandler = (data) => {
+        // TODO: discuss with backend
+        setHistory(data.history)
+    }
+
+    useEffect(() => {
+        const apiParameters = ProxyAPIParameters.getBuilder()
+            .setDataReceivingFunction(setHistoryHandler)
+            .build();
+        ProxyUser.proxy().api.history.get(apiParameters)
+    }, [])
+
     return (
         <div>
-            <AccountInfo name={"SomeUser"}/>
+            <AccountInfo name={localStorage.getItem('username')}/>
             <History history={history} displayNumber={5}/>
         </div>
     )

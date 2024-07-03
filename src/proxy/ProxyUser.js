@@ -7,12 +7,21 @@ export default class ProxyUser extends Proxy{
 
     constructor(error, message) {
         super(error, message)
+        ProxyUser.Field = this
+
         this.api = {
             login: new ProxyAPI(error, message, 'login'),
             feed: new ProxyAPI(error, message, 'feed'),
-            singUp: new ProxyAPI(error, message, 'singUp')
+            singUp: new ProxyAPI(error, message, 'singUp'),
+
+            // TODO: Connect with back
+            history: new ProxyAPI(error, message, 'history')
         }
 
         //this.createEvents(this.api)
+    }
+    static Field;
+    static proxy() {
+        return this.Field;
     }
 }
