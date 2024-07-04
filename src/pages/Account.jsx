@@ -33,7 +33,7 @@ const Account = (props) => {
 
     return (
         <div>
-            <AccountInfo name={localStorage.getItem('username')}/>
+            <AccountInfo/>
             <History history={history} displayNumber={5}/>
         </div>
     )

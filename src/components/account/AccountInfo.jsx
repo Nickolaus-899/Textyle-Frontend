@@ -2,7 +2,12 @@ import userImg from './../../images/user.svg'
 
 
 const AccountInfo = (props) => {
-    const exitHandler = (e) => { }
+    const exitHandler = (e) => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('username')
+
+        window.location.href = "/"
+    }
     const deleteHandler = (e) => { }
     const clearHistoryHandler = (e) => { }
 
@@ -12,7 +17,7 @@ const AccountInfo = (props) => {
               <img src={userImg} alt={"User Image"}/>
           </div>
 
-          <p>Привет, {props.name}!</p>
+          <p>Привет, {localStorage.getItem('username')}!</p>
 
           {/*<a className="MyButton" href="/change">*/}
           {/*    Change password*/}

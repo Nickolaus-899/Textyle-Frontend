@@ -48,7 +48,7 @@ const requestToServer = (parameters) => {
                   // Handle unauthorized responses
                   // TODO: How?
                   console.log(response)
-                  return String((await response.json()).body);
+                  return String((await response.json()).message);
               }
               console.log(response)
               if (!response.ok) {
@@ -84,7 +84,7 @@ const requestToServer = (parameters) => {
               //onUnauthorized()
               // TODO: How?
               console.log(response)
-              return String((await response.json()).body);
+              return String((await response.json()).message);
           }
         if (!response.ok) {
           throw new Error(await response.json());
