@@ -41,26 +41,32 @@ const requestToServer = (parameters) => {
           method: request.method.toString(),
           headers: headers,
           body: formData,
-          mode: 'no-cors'
+          mode: 'cors'
       })
           .then(async (response) => {
-              if (response.status === 401 || response.status === 403) {
+              if (response.status === 401 || response.status === 403 || response.status === 409) {
                   // Handle unauthorized responses
-                  return;
+                  // TODO: How?
+                  console.log(response)
+                  return String((await response.json()).body);
               }
               console.log(response)
               if (!response.ok) {
                   throw new Error(await response.json());
               }
               try {
-                  return response.json();
+                  return await response.json();
               } catch (e) {
                   throw new Error(await e);
               }
           })
           .then((jsonData) => {
-              request.dataReceivingFunction(jsonData.data);
-              request.messageReceivingFunction(jsonData.message);
+              if (typeof jsonData === 'string') {
+                  request.dataReceivingFunction(jsonData);
+              } else {
+                  request.dataReceivingFunction(jsonData);
+                  request.messageReceivingFunction(jsonData.message);
+              }
           })
           .catch((error) => {
               console.log(error);
@@ -74,12 +80,14 @@ const requestToServer = (parameters) => {
       headers: { Authorization: "Bearer " + request.token },
     })
       .then(async (response) => {
-          if (response.status === 401 || response.status === 403) {
+          if (response.status === 401 || response.status === 403 || response.status === 409) {
               //onUnauthorized()
-              return
+              // TODO: How?
+              console.log(response)
+              return String((await response.json()).body);
           }
         if (!response.ok) {
-          throw new Error(await response);
+          throw new Error(await response.json());
         }
         try {
           return response.json();
@@ -88,10 +96,12 @@ const requestToServer = (parameters) => {
         }
       })
       .then((jsonData) => {
-        // request.dataReceivingFunction(jsonData);
-        // request.messageReceivingFunction(jsonData);
-        request.dataReceivingFunction(jsonData.data);
-        request.messageReceivingFunction(jsonData.message);
+          if (typeof jsonData === 'string') {
+              request.dataReceivingFunction(jsonData);
+          } else {
+              request.dataReceivingFunction(jsonData);
+              request.messageReceivingFunction(jsonData.message);
+          }
       })
       .catch((error) => {
         request.error.setResetError(new Date().getTime());

@@ -7,6 +7,8 @@ const Auth = (props) => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
 
+    const [msg, setMsg] = useState("")
+
 
     const submitHandler = (e) => {
         const body = {
@@ -22,15 +24,31 @@ const Auth = (props) => {
         ProxyUser.proxy().api.login.post(apiParameters);
     };
     const login = (data) => {
-        console.log(data)
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('username', name)
+        if (typeof data == 'string') {
+            setName("")
+            setPassword("")
+
+            setMsg(data)
+        } else {
+            console.log(data)
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('username', name)
+
+            setMsg("")
+
+            window.location.href = "/"
+        }
     }
 
     return (
       <div className="LoginList">
-          <EnterField title="Name" setValue={setName}/>
-          <EnterField title="Password" setValue={setPassword}/>
+          <EnterField title="Name" setValue={setName} value={name}/>
+          <EnterField title="Password" setValue={setPassword} value={password}/>
+
+          <div className="ErrorMessage">
+              {msg}
+          </div>
+
 
           <div className="LoginButton">
               <button className="MyButton" onClick={() => (

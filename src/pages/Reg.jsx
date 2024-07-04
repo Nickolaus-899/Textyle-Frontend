@@ -8,7 +8,17 @@ const Reg = (props) => {
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
 
+  const [msg, setMsg] = useState("")
+
   const submitHandler = (e) => {
+      if (password !== checkPassword) {
+          setPassword("")
+          setCheckPassword("")
+          setMsg("Passwords are not equal")
+
+          return
+      }
+
       const body = {
           username: name,
           password: password,
@@ -19,18 +29,50 @@ const Reg = (props) => {
           .setBody(body)
           .build();
 
-      ProxyUser.proxy().api.login.post(apiParameters);
+      ProxyUser.proxy().api.singUp.post(apiParameters);
   };
 
     const signUp = (data) => {
-        console.log(data)
+        console.log('signUp', data)
+
+        const body = {
+            username: name,
+            password: password,
+        };
+        console.log(body)
+        const apiParameters = ProxyAPIParameters.getBuilder()
+            .setDataReceivingFunction(login)
+            .setBody(body)
+            .build();
+
+        ProxyUser.proxy().api.login.post(apiParameters);
+    }
+
+    const login = (data) => {
+        if (data == null) {
+            setName("")
+            setPassword("")
+            setCheckPassword("")
+        } else {
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('username', name)
+
+            window.location.href = "/"
+
+            console.log(data)
+            setMsg("")
+        }
     }
 
   return (
       <div className="LoginList">
-        <EnterField title="Name" setValue={setName}/>
-        <EnterField title="Password" setValue={setPassword}/>
-        <EnterField title="Repeat password" setValue={setCheckPassword}/>
+        <EnterField title="Name" setValue={setName} value={name}/>
+        <EnterField title="Password" setValue={setPassword} value={password}/>
+        <EnterField title="Repeat password" setValue={setCheckPassword} value={checkPassword}/>
+
+          <div className="ErrorMessage">
+              {msg}
+          </div>
 
         <div className="LoginButton">
           <button className="MyButton" onClick={() => (

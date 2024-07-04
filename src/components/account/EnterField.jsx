@@ -4,7 +4,9 @@ const EnterField = (props) => {
           <p>{props.title}</p>
           <input
               className="EnterFieldClass"
-              onChange={(e) => props.setValue(e.target.value)}/>
+              onChange={(e) => props.setValue(e.target.value)}
+              value={props.value}
+          />
       </div>
   )
 }

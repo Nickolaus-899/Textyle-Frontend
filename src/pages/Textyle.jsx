@@ -12,10 +12,10 @@ function Textyle() {
     const [output, setOutput] = useState("");
     const [proxy] = useState(new ProxyUser(() => {}, () => {}));
 
-    const sendRequest = () => {
+    const sendRequest = (style) => {
         const body = {
             text: input,
-            prompt: '',
+            prompt: style,
         };
         console.log(body)
         const apiParameters = ProxyAPIParameters.getBuilder()
@@ -27,7 +27,7 @@ function Textyle() {
     }
 
     const setOutputField = (data) => {
-        setOutput(data)
+        setOutput(data.result)
     }
 
     return (

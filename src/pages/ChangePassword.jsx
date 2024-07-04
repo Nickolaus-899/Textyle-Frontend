@@ -11,8 +11,8 @@ const ChangePassword = (props) => {
 
     return (
         <div className="LoginList">
-            <EnterField title="Password" setValue={setPassword}/>
-            <EnterField title="Repeat password" setValue={setCheckPassword}/>
+            <EnterField title="Password" setValue={setPassword} value={password}/>
+            <EnterField title="Repeat password" setValue={setCheckPassword} value={checkPassword}/>
 
             <div className="LoginButton">
                 <button className="MyButton" onClick={() => (
