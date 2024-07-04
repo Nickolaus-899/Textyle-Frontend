@@ -14,9 +14,9 @@ const AccountInfo = (props) => {
 
           <p>Привет, {props.name}!</p>
 
-          <a className="MyButton" href="/change">
-              Change password
-          </a>
+          {/*<a className="MyButton" href="/change">*/}
+          {/*    Change password*/}
+          {/*</a>*/}
 
           <button className="MyButton" onClick={() => (
               exitHandler()

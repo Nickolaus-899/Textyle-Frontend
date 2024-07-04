@@ -20,44 +20,56 @@ import React from "react";
 // }
 const requestToServer = (parameters) => {
   const requestWithBody = (request) => {
-    console.log(request);
-    console.log(1)
-    fetch(`${request.url}?${request.parameters}`, {
-      method: request.method.toString(),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + request.token,
-      },
-      body: JSON.stringify(request.body),
-    })
-      .then(async (response) => {
-          if (response.status === 401 || response.status === 403) {
-              //onUnauthorized()
-              return;
+      // Create a FormData object and append key-value pairs
+      const formData = new FormData();
+      if (request.body && typeof request.body === 'object') {
+          for (const key in request.body) {
+              if (request.body.hasOwnProperty(key)) {
+                  formData.append(key, request.body[key]);
+              }
           }
-        if (!response.ok) {
-          throw new Error(await response.json());
-        }
-        try {
-          return response.json();
-        } catch (e) {
-          throw new Error(await e);
-        }
+      }
+
+      const headers = {
+          // Content-Type should not be set manually; it will be set automatically by the browser
+          // when using FormData
+      };
+
+
+      console.log(request);
+      fetch(request.url, {
+          method: request.method.toString(),
+          headers: headers,
+          body: formData,
+          mode: 'no-cors'
       })
-      .then((jsonData) => {
-        // request.dataReceivingFunction(jsonData);
-        // request.messageReceivingFunction(jsonData);
-        request.dataReceivingFunction(jsonData.data);
-        request.messageReceivingFunction(jsonData.message);
-      })
-      .catch((error) => {
-        console.log(error)
-        //request.error.setResetError(new Date().getTime());
-        //request.error.setError(error.message);
-      });
+          .then(async (response) => {
+              if (response.status === 401 || response.status === 403) {
+                  // Handle unauthorized responses
+                  return;
+              }
+              console.log(response)
+              if (!response.ok) {
+                  throw new Error(await response.json());
+              }
+              try {
+                  return response.json();
+              } catch (e) {
+                  throw new Error(await e);
+              }
+          })
+          .then((jsonData) => {
+              request.dataReceivingFunction(jsonData.data);
+              request.messageReceivingFunction(jsonData.message);
+          })
+          .catch((error) => {
+              console.log(error);
+              // request.error.setResetError(new Date().getTime());
+              // request.error.setError(error.message);
+          });
   };
   const requestWithoutBody = (request) => {
-    fetch(`${request.url}?${request.parameters}`, {
+    fetch(`${request.url}`, {
       method: request.method.toString(),
       headers: { Authorization: "Bearer " + request.token },
     })

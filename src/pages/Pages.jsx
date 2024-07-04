@@ -21,7 +21,7 @@ function Pages() {
                 <Route path="/account" element={<Account/>}/>
                 <Route path="/reg" element={<Reg/>}/>
                 <Route path="/auth" element={<Auth/>}/>
-                <Route path="/change" element={<ChangePassword/>}/>
+                {/*<Route path="/change" element={<ChangePassword/>}/>*/}
             </Routes>
         </AnimatePresence>
     )

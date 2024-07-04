@@ -23,6 +23,8 @@ const Auth = (props) => {
     };
     const login = (data) => {
         console.log(data)
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('username', name)
     }
 
     return (
