@@ -1,3 +1,4 @@
+import { BodyType } from "../ProxyAPI/BodyType.tsx";
 import {RequestType} from "./RequestType.tsx";
 
 
@@ -10,6 +11,7 @@ export default class RequestParameters{
         this.method = RequestType.GET
         this.parameters = ""
         this.body = null
+        this.bodyType = BodyType.UNKNOWN
         this.error = {
             setError: () => {},
             setResetError: () => {}
@@ -20,7 +22,7 @@ export default class RequestParameters{
         }
     }
 
-    isHavingBody(){ return this.body !== null }
+    isHavingBody(){ return this.bodyType !== BodyType.UNKNOWN }
 
     static getBuilder() { return new Builder() }
 }
@@ -50,6 +52,7 @@ class Builder{
         this.requestParameters.messageReceivingFunction = apiParameters.messageReceivingFunction
         this.requestParameters.parameters = apiParameters.parameters
         this.requestParameters.body = apiParameters.body
+        this.requestParameters.bodyType = apiParameters.bodyType
         return this
     }
 

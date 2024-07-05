@@ -1,9 +1,12 @@
+import { BodyType } from "./BodyType.tsx"
+
 export default class ProxyAPIParameters{
     constructor() {
         this.dataReceivingFunction = () => {}
         this.messageReceivingFunction = () => {}
         this.parameters = ""
         this.body = null
+        this.bodytype = BodyType.UNKNOWN
     }
 
     static getBuilder() { return new Builder() }
@@ -29,8 +32,9 @@ class Builder{
         return this
     }
 
-    setBody(body){
+    setBody(body, bodyType){
         this.apiParameters.body = body
+        this.apiParameters.bodyType = bodyType
         return this
     }
 

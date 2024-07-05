@@ -2,6 +2,7 @@ import EnterField from "../components/account/EnterField";
 import {useState} from "react";
 import ProxyUser from "../proxy/ProxyUser";
 import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
+import { BodyType } from "../proxy/ProxyAPI/BodyType.tsx";
 
 const Auth = (props) => {
     const [name, setName] = useState("");
@@ -18,7 +19,7 @@ const Auth = (props) => {
         console.log(body)
         const apiParameters = ProxyAPIParameters.getBuilder()
           .setDataReceivingFunction(login)
-          .setBody(body)
+          .setBody(body, BodyType.FORM_DATA)
           .build();
     
         ProxyUser.proxy().api.login.post(apiParameters);
