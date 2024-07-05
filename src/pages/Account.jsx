@@ -25,6 +25,7 @@ const Account = (props) => {
     }
 
     useEffect(() => {
+        return;
         const apiParameters = ProxyAPIParameters.getBuilder()
             .setDataReceivingFunction(setHistoryHandler)
             .build();

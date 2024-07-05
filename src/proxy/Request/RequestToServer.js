@@ -89,55 +89,58 @@ const requestToServer = (request) => {
             //error.setResetError(new Date().getTime());
             //error.setError(err.message);
         });
+};
+    
 
-//   const requestWithBody = (request) => {
-//       // Create a FormData object and append key-value pairs
-//       const formData = parseJsonToForm(request.body)
+const requestWithBody = (request) => {
+      // Create a FormData object and append key-value pairs
+      const formData = parseJsonToForm(request.body)
 
-//       const headers = {
-//           // Content-Type should not be set manually; it will be set automatically by the browser
-//           // when using FormData
-//       };
+      const headers = {
+          // Content-Type should not be set manually; it will be set automatically by the browser
+          // when using FormData
+      };
 
 
-//       console.log(request);
-//       fetch(request.url, {
-        //     method: request.method.toString(),
-        //     headers: headers,
-        //     body: formData,
-        //     mode: 'cors'
-        // })
-        //     .then(async (response) => {
-        //         if (response.status === 401 || response.status === 403 || response.status === 409) {
-        //             // Handle unauthorized responses
-        //             // TODO: How?
-        //             console.log(response)
-        //             return String((await response.json()).message);
-        //         }
-        //         console.log(response)
-        //         if (!response.ok) {
-        //             throw new Error(await response.json());
-        //         }
-        //         try {
-        //             return await response.json();
-        //         } catch (e) {
-        //             throw new Error(await e);
-        //         }
-        //     })
-        //     .then((jsonData) => {
-        //         if (typeof jsonData === 'string') {
-        //             request.dataReceivingFunction(jsonData);
-        //         } else {
-        //             request.dataReceivingFunction(jsonData);
-        //             request.messageReceivingFunction(jsonData.message);
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //         // request.error.setResetError(new Date().getTime());
-        //         // request.error.setError(error.message);
-        //     });
-//   };
+      console.log(request);
+      return;
+      fetch(request.url, {
+            method: request.method.toString(),
+            headers: headers,
+            body: formData,
+            mode: 'cors'
+        })
+            .then(async (response) => {
+                if (response.status === 401 || response.status === 403 || response.status === 409) {
+                    // Handle unauthorized responses
+                    // TODO: How?
+                    console.log(response)
+                    return String((await response.json()).message);
+                }
+                console.log(response)
+                if (!response.ok) {
+                    throw new Error(await response.json());
+                }
+                try {
+                    return await response.json();
+                } catch (e) {
+                    throw new Error(await e);
+                }
+            })
+            .then((jsonData) => {
+                if (typeof jsonData === 'string') {
+                    request.dataReceivingFunction(jsonData);
+                } else {
+                    request.dataReceivingFunction(jsonData);
+                    request.messageReceivingFunction(jsonData.message);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                // request.error.setResetError(new Date().getTime());
+                // request.error.setError(error.message);
+            });
+  };
 //   const requestWithoutBody = (request) => {
 //     fetch(`${request.url}`, {
 //       method: request.method.toString(),
@@ -175,6 +178,4 @@ const requestToServer = (request) => {
 
 //   if (parameters.isHavingBody()) requestWithBody(parameters);
 //   else requestWithoutBody(parameters);
-};
-
 export default requestToServer

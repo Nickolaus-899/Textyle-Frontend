@@ -6,6 +6,7 @@ import "./../index.css"
 import Options from "../components/textyle/Options";
 import ProxyUser from "../proxy/ProxyUser";
 import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
+import { BodyType } from "../proxy/ProxyAPI/BodyType.tsx";
 
 function Textyle() {
     const [input, setInput] = useState("");
@@ -20,7 +21,7 @@ function Textyle() {
         console.log(body)
         const apiParameters = ProxyAPIParameters.getBuilder()
           .setDataReceivingFunction(setOutputField)
-          .setBody(body)
+          .setBody(body, BodyType.FORM_DATA)
           .build();
     
         proxy.api.feed.post(apiParameters);
