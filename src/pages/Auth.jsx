@@ -3,12 +3,12 @@ import {useState} from "react";
 import ProxyUser from "../proxy/ProxyUser";
 import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
 import { BodyType } from "../proxy/ProxyAPI/BodyType.tsx";
+import {displayMessage, saveStateMessage} from "../proxy/errors/ErrorDisplay";
+import {MessageType} from "../proxy/errors/MessageType.tsx";
 
 const Auth = (props) => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-
-    const [msg, setMsg] = useState("")
 
 
     const submitHandler = (e) => {
@@ -18,27 +18,34 @@ const Auth = (props) => {
         };
         console.log(body)
         const apiParameters = ProxyAPIParameters.getBuilder()
-          .setDataReceivingFunction(login)
-          .setBody(body, BodyType.FORM_DATA)
-          .build();
+            .setDataReceivingFunction(login)
+            .setMessageReceivingFunction(errorCase)
+            .setBody(body, BodyType.FORM_DATA)
+            .build();
     
         ProxyUser.proxy().api.login.post(apiParameters);
     };
-    const login = (data) => {
-        if (typeof data == 'string') {
+
+    const errorCase = (message, type) => {
+        if (type === MessageType.ERROR) {
             setName("")
             setPassword("")
-
-            setMsg(data)
-        } else {
-            console.log(data)
-            localStorage.setItem('token', data.token)
-            localStorage.setItem('username', name)
-
-            setMsg("")
-
-            window.location.href = "/"
         }
+
+        if (type === MessageType.SUCCESS) {
+            saveStateMessage(message, type)
+            return
+        }
+
+        displayMessage(message, type)
+    }
+
+    const login = (data) => {
+        console.log(data)
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('username', name)
+
+        window.location.href = "/"
     }
 
     return (
@@ -46,9 +53,9 @@ const Auth = (props) => {
           <EnterField title="Name" setValue={setName} value={name}/>
           <EnterField title="Password" setValue={setPassword} value={password}/>
 
-          <div className="ErrorMessage">
-              {msg}
-          </div>
+          {/*<div className="ErrorMessage">*/}
+          {/*    {msg}*/}
+          {/*</div>*/}
 
 
           <div className="LoginButton">

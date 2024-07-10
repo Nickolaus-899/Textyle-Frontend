@@ -4,19 +4,22 @@ import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
 import ProxyUser from "../proxy/ProxyUser";
 import { BodyType } from "../proxy/ProxyAPI/BodyType.tsx";
 
+
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {displayMessage, saveStateMessage} from "../proxy/errors/ErrorDisplay";
+import {MessageType} from "../proxy/errors/MessageType.tsx";
+
+
 const Reg = (props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
 
-  const [msg, setMsg] = useState("")
-
   const submitHandler = (e) => {
       if (password !== checkPassword) {
-          setPassword("")
-          setCheckPassword("")
-          setMsg("Passwords are not equal")
-
+          displayMessage('Passwords are not equal', MessageType.WARN)
           return
       }
 
@@ -27,6 +30,7 @@ const Reg = (props) => {
       console.log(body)
       const apiParameters = ProxyAPIParameters.getBuilder()
           .setDataReceivingFunction(signUp)
+          .setMessageReceivingFunction(errorCase)
           .setBody(body, BodyType.FORM_DATA)
           .build();
 
@@ -43,6 +47,7 @@ const Reg = (props) => {
         console.log(body)
         const apiParameters = ProxyAPIParameters.getBuilder()
             .setDataReceivingFunction(login)
+            .setMessageReceivingFunction(errorCase)
             .setBody(body)
             .build();
 
@@ -50,20 +55,29 @@ const Reg = (props) => {
     }
 
     const login = (data) => {
-        if (data == null) {
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('username', name)
+
+        console.log(data)
+
+        window.location.href = "/"
+    }
+
+    const errorCase = (message, type) => {
+        if (type === MessageType.ERROR) {
             setName("")
             setPassword("")
             setCheckPassword("")
-        } else {
-            localStorage.setItem('token', data.token)
-            localStorage.setItem('username', name)
-
-            window.location.href = "/"
-
-            console.log(data)
-            setMsg("")
         }
+
+        if (type === MessageType.SUCCESS) {
+            saveStateMessage(message, type)
+            return
+        }
+
+        displayMessage(message, type)
     }
+
 
   return (
       <div className="LoginList">
@@ -71,9 +85,9 @@ const Reg = (props) => {
         <EnterField title="Password" setValue={setPassword} value={password}/>
         <EnterField title="Repeat password" setValue={setCheckPassword} value={checkPassword}/>
 
-          <div className="ErrorMessage">
-              {msg}
-          </div>
+          {/*<div className="ErrorMessage">*/}
+          {/*    {msg}*/}
+          {/*</div>*/}
 
         <div className="LoginButton">
           <button className="MyButton" onClick={() => (

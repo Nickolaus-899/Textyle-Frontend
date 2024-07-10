@@ -1,12 +1,18 @@
 import userImg from './../../images/user.svg'
+import {displayMessage, saveStateMessage} from "../../proxy/errors/ErrorDisplay";
+import {MessageType} from "../../proxy/errors/MessageType.tsx";
 
 
 const AccountInfo = (props) => {
     const exitHandler = (e) => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('username')
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+
+        saveStateMessage('Successfully exited', MessageType.SUCCESS)
+        // displayMessage('Successfully exited', MessageType.SUCCESS)
 
         window.location.href = "/"
+
     }
     const deleteHandler = (e) => { }
     const clearHistoryHandler = (e) => { }

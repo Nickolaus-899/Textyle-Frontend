@@ -12,6 +12,7 @@ import ChangePassword from "./ChangePassword";
 
 function Pages() {
     const location = useLocation();
+
     return (
         <AnimatePresence mode={"wait"}>
             <Routes location={location} key={location.pathname}>

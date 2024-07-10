@@ -7,6 +7,8 @@ import Options from "../components/textyle/Options";
 import ProxyUser from "../proxy/ProxyUser";
 import ProxyAPIParameters from "../proxy/ProxyAPI/ProxyAPIParameters";
 import { BodyType } from "../proxy/ProxyAPI/BodyType.tsx";
+import {displayMessage} from "../proxy/errors/ErrorDisplay";
+import {MessageType} from "../proxy/errors/MessageType.tsx";
 
 function Textyle() {
     const [input, setInput] = useState("");
@@ -14,15 +16,18 @@ function Textyle() {
     const [proxy] = useState(new ProxyUser(() => {}, () => {}));
 
     const sendRequest = (style) => {
+        displayMessage('Wait for the result...', MessageType.INFO)
+
         const body = {
             text: input,
             prompt: style,
         };
         console.log(body)
         const apiParameters = ProxyAPIParameters.getBuilder()
-          .setDataReceivingFunction(setOutputField)
-          .setBody(body, BodyType.FORM_DATA)
-          .build();
+            .setDataReceivingFunction(setOutputField)
+            .setMessageReceivingFunction(displayMessage)
+            .setBody(body, BodyType.FORM_DATA)
+            .build();
     
         proxy.api.feed.post(apiParameters);
     }
