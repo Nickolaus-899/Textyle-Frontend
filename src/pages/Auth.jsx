@@ -33,10 +33,11 @@ const Auth = (props) => {
         }
 
         if (type === MessageType.SUCCESS) {
-            saveStateMessage(message, type)
+            saveStateMessage(message, type, "0")
             return
         }
 
+        // saveStateMessage(message, type, "1")
         displayMessage(message, type)
     }
 

@@ -13,9 +13,8 @@ export default class ProxyUser extends Proxy{
             login: new ProxyAPI(error, message, 'login'),
             feed: new ProxyAPI(error, message, 'feed'),
             singUp: new ProxyAPI(error, message, 'sign_up'),
-
-            // TODO: Connect with backend
-            history: new ProxyAPI(error, message, 'history')
+            history: new ProxyAPI(error, message, 'history'),
+            clear: new ProxyAPI(error, message, 'clear')
         }
 
         //this.createEvents(this.api)

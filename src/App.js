@@ -11,10 +11,6 @@ import {MessageType} from "./proxy/errors/MessageType.tsx";
 
 function App() {
     useEffect(() => {
-        new ProxyUser(() => {}, () => {})
-    }, [])
-
-    useEffect(() => {
         const pageStateStr = localStorage.getItem('pageState')
 
         if (!pageStateStr) {

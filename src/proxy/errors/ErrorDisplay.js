@@ -28,8 +28,8 @@ export const displayMessage = (message, type) => {
 }
 
 
-export const saveStateMessage = (message, type) => {
+export const saveStateMessage = (message, type, pageState) => {
     localStorage.setItem('notificationMessage', message);
     localStorage.setItem('notificationType', type.toString());
-    localStorage.setItem('pageState', "0")
+    localStorage.setItem('pageState', pageState)
 }

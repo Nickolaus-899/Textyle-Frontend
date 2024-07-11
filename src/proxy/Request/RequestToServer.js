@@ -65,8 +65,27 @@ const requestToServer = (request) => {
     fetch(url, fetchOptions)
         .then(async (response) => {
             if ([401, 403, 409].includes(response.status)) {
-                console.log(response);
-                const errorMessage = (await response.json()).message;
+                console.log("in response:", response);
+
+                let errorMessage = ""
+
+                switch (response.status) {
+                    case 401:
+                        errorMessage = "Unauthorized";
+                        break
+                    case 403:
+                        errorMessage = "Forbidden to accomplish";
+                        break
+                    case 409:
+                        errorMessage = "Conflict"
+                        break
+                    default:
+                        errorMessage = "Some error with authorization"
+                        break
+                }
+
+                console.log(errorMessage)
+                // const errorMessage = (await response.json()).message;
                 return Promise.reject(new Error(errorMessage));
             }
 
@@ -75,15 +94,21 @@ const requestToServer = (request) => {
                 return Promise.reject(new Error(error.message || 'Request failed'));
             }
 
+            console.log('response before json:', response)
+
+            if (fetchOptions.method === 'DELETE') {
+                return response;
+            }
             return response.json();
         })
         .then((jsonData) => {
+            console.log('In response:', jsonData)
             dataReceivingFunction(jsonData);
-            messageReceivingFunction(jsonData.message, MessageType.SUCCESS);
+            messageReceivingFunction("Done successfully", MessageType.SUCCESS);
         })
         .catch((err) => {
-            console.log(err)
-            messageReceivingFunction(err, MessageType.ERROR);
+            console.log("in error:", err);
+            messageReceivingFunction(err.message, MessageType.ERROR);
             //error.setResetError(new Date().getTime());
             //error.setError(err.message);
         });

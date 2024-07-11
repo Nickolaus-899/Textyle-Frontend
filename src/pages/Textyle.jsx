@@ -13,7 +13,6 @@ import {MessageType} from "../proxy/errors/MessageType.tsx";
 function Textyle() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
-    const [proxy] = useState(new ProxyUser(() => {}, () => {}));
 
     const sendRequest = (style) => {
         displayMessage('Wait for the result...', MessageType.INFO)
@@ -29,10 +28,11 @@ function Textyle() {
             .setBody(body, BodyType.FORM_DATA)
             .build();
     
-        proxy.api.feed.post(apiParameters);
+        ProxyUser.proxy().api.feed.post(apiParameters);
     }
 
     const setOutputField = (data) => {
+        console.log('output-result:', data)
         setOutput(data.result)
     }
 

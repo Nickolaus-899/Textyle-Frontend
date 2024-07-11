@@ -6,7 +6,7 @@ export default class ProxyAPIParameters{
         this.messageReceivingFunction = () => {}
         this.parameters = ""
         this.body = null
-        this.bodytype = BodyType.UNKNOWN
+        this.bodyType = BodyType.UNKNOWN
     }
 
     static getBuilder() { return new Builder() }

@@ -1,6 +1,8 @@
 import userImg from './../../images/user.svg'
 import {displayMessage, saveStateMessage} from "../../proxy/errors/ErrorDisplay";
 import {MessageType} from "../../proxy/errors/MessageType.tsx";
+import ProxyAPIParameters from "../../proxy/ProxyAPI/ProxyAPIParameters";
+import ProxyUser from "../../proxy/ProxyUser";
 
 
 const AccountInfo = (props) => {
@@ -8,14 +10,32 @@ const AccountInfo = (props) => {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
 
-        saveStateMessage('Successfully exited', MessageType.SUCCESS)
+        saveStateMessage('Successfully exited', MessageType.SUCCESS, "0")
         // displayMessage('Successfully exited', MessageType.SUCCESS)
 
         window.location.href = "/"
 
     }
-    const deleteHandler = (e) => { }
-    const clearHistoryHandler = (e) => { }
+    const deleteHandler = (e) => {
+
+    }
+
+    const clearHistoryHandler = (e) => {
+        const apiParameters = ProxyAPIParameters.getBuilder()
+            .setDataReceivingFunction(clearHistoryReceiver)
+            .setMessageReceivingFunction(clearHistoryMsg)
+            .build();
+
+        ProxyUser.proxy().api.clear.delete(apiParameters);
+    }
+
+    const clearHistoryReceiver = (data) => {
+        props.setHistory([])
+    }
+
+    const clearHistoryMsg = (msg) => {
+        displayMessage(msg, MessageType.INFO)
+    }
 
   return (
       <div className="UserInfoWrapper">
@@ -23,7 +43,7 @@ const AccountInfo = (props) => {
               <img src={userImg} alt={"User Image"}/>
           </div>
 
-          <p>Привет, {localStorage.getItem('username')}!</p>
+          <p>Hello, {localStorage.getItem('username')}!</p>
 
           {/*<a className="MyButton" href="/change">*/}
           {/*    Change password*/}

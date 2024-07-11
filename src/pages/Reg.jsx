@@ -48,7 +48,7 @@ const Reg = (props) => {
         const apiParameters = ProxyAPIParameters.getBuilder()
             .setDataReceivingFunction(login)
             .setMessageReceivingFunction(errorCase)
-            .setBody(body)
+            .setBody(body, BodyType.FORM_DATA)
             .build();
 
         ProxyUser.proxy().api.login.post(apiParameters);
@@ -71,7 +71,7 @@ const Reg = (props) => {
         }
 
         if (type === MessageType.SUCCESS) {
-            saveStateMessage(message, type)
+            saveStateMessage(message, type, "0")
             return
         }
 

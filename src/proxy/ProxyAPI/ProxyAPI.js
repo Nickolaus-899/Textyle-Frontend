@@ -15,37 +15,37 @@ export default class ProxyAPI{
     }
 
     get(apiParameters){
-        const parameters = RequestParameters.getBuilder().
-            setUrl(URL + API + this.directory).
-            setToken(localStorage.getItem('token')).
-            setMethod(RequestType.GET).
-            setAPIParameters(apiParameters).
-            setError(this.error).
-            setMessage(this.message).build()
+        const parameters = RequestParameters.getBuilder()
+            .setUrl(URL + API + this.directory)
+            .setToken(localStorage.getItem('token'))
+            .setMethod(RequestType.GET)
+            .setAPIParameters(apiParameters)
+            .setError(this.error)
+            .setMessage(this.message).build()
 
         requestToServer(parameters)
     }
 
     post(apiParameters){
-        const parameters = RequestParameters.getBuilder().
-            setUrl(URL + API + this.directory).
-            setToken(localStorage.getItem('token')).
-            setMethod(RequestType.POST).
-            setAPIParameters(apiParameters).
-            setError(this.error).
-            setMessage(this.message).build()
+        const parameters = RequestParameters.getBuilder()
+            .setUrl(URL + API + this.directory)
+            .setToken(localStorage.getItem('token'))
+            .setMethod(RequestType.POST)
+            .setAPIParameters(apiParameters)
+            .setError(this.error)
+            .setMessage(this.message).build()
 
         requestToServer(parameters)
     }
 
     delete(apiParameters){
-        const parameters = RequestParameters.getBuilder().
-            setUrl(URL + API + this.directory).
-            setToken(localStorage.getItem('token')).
-            setMethod(RequestType.DELETE).
-            setAPIParameters(apiParameters).
-            setError(this.error).
-            setMessage(this.message).build()
+        const parameters = RequestParameters.getBuilder()
+            .setUrl(URL + API + this.directory)
+            .setToken(localStorage.getItem('token'))
+            .setMethod(RequestType.DELETE)
+            .setAPIParameters(apiParameters)
+            .setError(this.error)
+            .setMessage(this.message).build()
 
         requestToServer(parameters)
     }
