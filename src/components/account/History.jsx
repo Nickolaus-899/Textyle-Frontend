@@ -12,8 +12,9 @@ const History = (props) => {
         conversational: 'red'
     };
 
-    // const historyItems = history.slice(-props.displayNumber);
-    const historyItems = history
+    const historyItems = history.length > props.displayNumber
+        ? history.slice(-props.displayNumber)
+        : history;
 
     console.log("history:", historyItems)
 
