@@ -15,8 +15,6 @@ const Header = (props) => {
                 <a href="/account" className="HeaderLink">Account</a>
             )
             }
-
-            <a href="/account" className="HeaderLink">Account(test)</a>
         </div>
       </div>
   )
