@@ -38,6 +38,11 @@ export const IForm = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 800px) {
+    height: 30vh;
+    width: 70vw;
+  }
 `
 
 export const StyledTextArea = styled.textarea`
@@ -50,4 +55,8 @@ export const StyledTextArea = styled.textarea`
   
   resize: none;
   outline: none;
+
+  @media only screen and (max-width: 800px) { 
+    font-size: 2vh;
+  }
 `;

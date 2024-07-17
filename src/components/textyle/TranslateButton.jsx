@@ -8,6 +8,10 @@ const TranslateButton = (props) => {
         background-color: ${(props) => props.color};
         border: 2px solid ${(props) => props.color};
       }
+
+      @media only screen and (max-width: 800px) { 
+        width: 60vw;
+      }
     `
     return (
         <div>

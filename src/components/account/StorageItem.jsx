@@ -21,14 +21,18 @@ const StorageItem = (props) => {
         box-shadow: 0 10px 40px ${(props) => props.color};
         cursor: pointer;
       }
+
+      @media only screen and (max-width: 800px) { 
+        flex-direction: column;
+      }
     `
 
   return (
       <StorageItemWrapper color={props.color}>
-          <div>
+          <div className="HistoryTextItem">
               <p>Input</p>
               <TextHistory>
-                  <StyledTextArea value={props.input}/>
+                  <StyledTextArea className="HistoryWindow" value={props.input}/>
               </TextHistory>
 
           </div>
@@ -36,7 +40,7 @@ const StorageItem = (props) => {
           <div>
               <p>Output ({props.style})</p>
               <TextHistory>
-                  <StyledTextArea value={props.output}/>
+                  <StyledTextArea className="HistoryWindow" value={props.output}/>
               </TextHistory>
           </div>
       </StorageItemWrapper>
@@ -48,6 +52,13 @@ const TextHistory = styled(IForm)`
     width: 30vw;
   
     border-radius: 0;
+
+  @media only screen and (max-width: 800px) {
+    height: 9vh;
+    width: 70vw;
+    
+    padding: 1.5vh;
+  }
 `
 
 

@@ -54,10 +54,6 @@ const Auth = (props) => {
           <EnterField title="Name" setValue={setName} value={name}/>
           <EnterField title="Password" setValue={setPassword} value={password}/>
 
-          {/*<div className="ErrorMessage">*/}
-          {/*    {msg}*/}
-          {/*</div>*/}
-
 
           <div className="LoginButton">
               <button className="MyButton" onClick={() => (

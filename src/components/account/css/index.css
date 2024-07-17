@@ -52,3 +52,42 @@
     width: 20vw;
     height: 20vw;
 }
+
+
+@media only screen and (max-width: 800px) {
+    .HistoryTextItem {
+        margin-bottom: 3vh;
+    }
+
+    .HistoryWindow {
+        font-size: 1.5vh !important;
+    }
+
+    .HistoryWrapper {
+        padding: 7vw;
+    }
+
+    .UserInfoWrapper button {
+        width: 70vw;
+    }
+
+    .userIcon {
+        width: 35vw;
+        height: 35vw;
+
+        margin-top: 3vh;
+    }
+
+    .userIcon img {
+        width: 20vw;
+
+        margin-left: 2vw;
+    }
+
+    .UserInfoWrapper p {
+        font-size: 3vh;
+
+        margin-top: 0;
+        margin-bottom: 4vh;
+    }
+}

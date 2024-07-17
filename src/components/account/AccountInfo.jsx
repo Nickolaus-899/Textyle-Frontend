@@ -45,10 +45,6 @@ const AccountInfo = (props) => {
 
           <p>Hello, {localStorage.getItem('username')}!</p>
 
-          {/*<a className="MyButton" href="/change">*/}
-          {/*    Change password*/}
-          {/*</a>*/}
-
           <button className="MyButton" onClick={() => (
               exitHandler()
           )}>
