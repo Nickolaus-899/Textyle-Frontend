@@ -11,8 +11,9 @@ import {displayMessage} from "../proxy/errors/ErrorDisplay";
 import {MessageType} from "../proxy/errors/MessageType.tsx";
 
 function Textyle() {
-    const [input, setInput] = useState("Hi, what's up?");
-    const [output, setOutput] = useState("Good afternoon! How are you today?");
+    const [input, setInput] = useState("Здарова, чё как?");
+    const [output, setOutput] = useState("Добрый день! Позвольте поинтересоваться, " +
+        "как ваши дела сегодня?");
 
     const sendRequest = (style) => {
         displayMessage('Wait for the result...', MessageType.INFO)
