@@ -36,6 +36,10 @@ function App() {
         localStorage.setItem('pageState', (pageState + 1).toString())
     }, [])
 
+    useEffect(() => {
+        document.title = 'Textyle';
+    }, []);
+
   return (
     <div className="App">
         <div>
