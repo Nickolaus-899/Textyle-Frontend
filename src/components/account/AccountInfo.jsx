@@ -17,7 +17,7 @@ const AccountInfo = (props) => {
 
     }
     const deleteHandler = (e) => {
-
+        displayMessage("Not implemented yet", MessageType.WARN)
     }
 
     const clearHistoryHandler = (e) => {
