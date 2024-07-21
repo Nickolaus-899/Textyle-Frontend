@@ -99,7 +99,7 @@ const requestToServer = (request) => {
             if (fetchOptions.method === 'DELETE') {
                 return response;
             }
-
+            console.log('before parsing: ', response.text())
             return JSON.parse(await response.text());
         })
         .then((jsonData) => {
