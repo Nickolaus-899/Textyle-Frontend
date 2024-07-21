@@ -25,7 +25,7 @@ const Account = (props) => {
             .setDataReceivingFunction(setHistoryHandler)
             .setMessageReceivingFunction(displayErrorHistory)
             .build();
-        ProxyUser.proxy().api.history.get(apiParameters)
+        ProxyUser.proxy().api.history.post(apiParameters)
     }, [])
 
     return (
