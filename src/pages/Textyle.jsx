@@ -12,7 +12,8 @@ import {MessageType} from "../proxy/errors/MessageType.tsx";
 
 
 function removeMessagePrefix(str) {
-    const prefix = 'Message:';
+    const prefix = 'Message: ';
+    console.log(str, "->", str.startsWith(prefix), str.substring(prefix.length))
     if (str.startsWith(prefix)) {
         return str.substring(prefix.length);
     }
