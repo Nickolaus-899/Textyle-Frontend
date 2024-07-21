@@ -10,6 +10,15 @@ import { BodyType } from "../proxy/ProxyAPI/BodyType.tsx";
 import {displayMessage} from "../proxy/errors/ErrorDisplay";
 import {MessageType} from "../proxy/errors/MessageType.tsx";
 
+
+function removeMessagePrefix(str) {
+    const prefix = 'Message: ';
+    if (str.startsWith(prefix)) {
+        return str.substring(prefix.length);
+    }
+    return str;
+}
+
 function Textyle() {
     const [input, setInput] = useState("Здарова, чё как?");
     const [output, setOutput] = useState("Добрый день! Позвольте поинтересоваться, " +
@@ -47,7 +56,7 @@ function Textyle() {
 
                 <div className="TranslateItem">
                     <p>Output</p>
-                    <OutputField output={output}/>
+                    <OutputField output={removeMessagePrefix(output)}/>
                 </div>
 
                 <div className="TranslateItem">
