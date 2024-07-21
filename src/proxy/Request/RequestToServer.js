@@ -99,7 +99,8 @@ const requestToServer = (request) => {
             if (fetchOptions.method === 'DELETE') {
                 return response;
             }
-            return response.json();
+
+            return JSON.parse(await response.text());
         })
         .then((jsonData) => {
             console.log('In response:', jsonData)

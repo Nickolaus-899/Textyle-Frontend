@@ -1,6 +1,8 @@
 import React from 'react';
 import StorageItem from './StorageItem';
 
+import {removeMessagePrefix} from "../../pages/Textyle";
+
 const History = (props) => {
     const { history } = props;
 
@@ -24,7 +26,7 @@ const History = (props) => {
                 <StorageItem
                     key={index}
                     input={item.text}
-                    output={item.result}
+                    output={removeMessagePrefix(item.result)}
                     color={colorMap[item.prompt] || 'gray'}
                     style={item.prompt}
                 />
