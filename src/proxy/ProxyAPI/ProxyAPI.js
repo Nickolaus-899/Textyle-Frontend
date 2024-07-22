@@ -4,7 +4,7 @@ import {RequestType} from "../Request/RequestType.tsx";
 import requestToServer from "../Request/RequestToServer";
 
 // const URL = 'http://127.0.0.1:8000/';
-const URL = 'https://9f99-188-130-155-182.ngrok-free.app/'
+const URL = 'https://6cf3-188-130-155-182.ngrok-free.app/'
 const API = ''
 
 export default class ProxyAPI{
